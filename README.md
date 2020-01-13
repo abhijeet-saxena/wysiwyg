@@ -2,6 +2,8 @@
 
 A rich text editor in which "What You See Is What You Get"
 
+<img src="banner.png" alt="WYSIWYG">
+
 backColor
 Changes the document background color. In styleWithCss mode, it affects the background color of the containing block instead. This requires a &lt;color&gt; value string to be passed in as a value argument. Note that Internet Explorer uses this to set the text background color.
 
@@ -142,3 +144,5 @@ Toggles the use of HTML tags or CSS for the generated markup. Requires a boolean
 
 styleWithCSS
 Replaces the useCSS command. true modifies/generates style attributes in markup, false generates presentational elements.
+
+Made with ️❤︎ by **[Rocky](https://rocky93.github.io/ 'Abhijeet Saxena')**
