@@ -87,6 +87,7 @@ export const copyToHTML = (target) => {
 
 // Sets the given text as active selection
 export const downloadPDF = (editor) => {
+  editor.classList.add('pdf')
   html2canvas(editor, {
     scale: 1,
     allowTaint: true,
@@ -97,4 +98,5 @@ export const downloadPDF = (editor) => {
     pdf.addImage(imgData, 'PNG', 5, 20)
     pdf.save('File.pdf')
   })
+  editor.classList.remove('pdf')
 }

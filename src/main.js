@@ -23,7 +23,12 @@ window.onload = () => {
   // Draws all toolbar buttons
   Object.keys(svgMap).forEach((svg) => (toolbar.innerHTML += svgMap[svg]))
 
-  editor.setAttribute('data-count', `${editor.innerText.length} Characters`)
+  editor.setAttribute(
+    'data-count',
+    `${editor.innerText.split(' ').length} Words | ${
+      editor.innerText.length
+    } Characters`
+  )
 
   // DOM selectors for all user input forms
   const urlForm = document.querySelector('.url-form')
@@ -158,6 +163,11 @@ window.onload = () => {
     if (e.keyCode === 85 && e.metaKey)
       document.execCommand('underline', false, null)
 
-    editor.setAttribute('data-count', `${editor.innerText.length} Characters`)
+    editor.setAttribute(
+      'data-count',
+      `${editor.innerText.split(' ').length} Words | ${
+        editor.innerText.length + 1
+      } Characters`
+    )
   })
 }
