@@ -50,6 +50,16 @@ body header h1 {
   overflow-y: scroll;
   outline: none;
   caret-color: currentColor;
+  position: relative;
+}
+
+.editor::after {
+  content: attr(data-count);
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
+  opacity: 0.7;
+  font-family: courier new;
 }
 
 .editor a {
