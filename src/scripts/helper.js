@@ -80,10 +80,6 @@ export const copyToHTML = (target) => {
       padding: 1rem;
       margin: 5px 0rem;
       border-radius: 5px;`
-
-    document.querySelector('pre').innerHTML = document
-      .querySelector('pre')
-      .innerHTML.trim()
   }
 
   navigator.clipboard.writeText(target.innerHTML.trim())
