@@ -238,3 +238,18 @@ select {
   margin-top: 4px;
   margin-right: 5px;
 }
+
+/* Print Styles */
+@media print {
+  header {
+    display: none;
+  }
+
+  main {
+    border: none;
+  }
+
+  main .toolbar {
+    opacity: 0;
+  }
+}
