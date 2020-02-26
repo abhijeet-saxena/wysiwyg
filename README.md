@@ -1,12 +1,12 @@
-# wysiwyg
+# WYSIWYG
 
 A rich text editor in which "What You See Is What You Get"
 
 backColor
-Changes the document background color. In styleWithCss mode, it affects the background color of the containing block instead. This requires a <color> value string to be passed in as a value argument. Note that Internet Explorer uses this to set the text background color.
+Changes the document background color. In styleWithCss mode, it affects the background color of the containing block instead. This requires a &lt;color&gt; value string to be passed in as a value argument. Note that Internet Explorer uses this to set the text background color.
 
 bold
-Toggles bold on/off for the selection or at the insertion point. Internet Explorer uses the <strong> tag instead of <b>.
+Toggles bold on/off for the selection or at the insertion point. Internet Explorer uses the &lt;strong&gt; tag instead of &lt;b&gt;.
 
 contentReadOnly
 Makes the content document either read-only or editable. This requires a boolean true/false as the value argument. (Not supported by Internet Explorer.)
@@ -21,7 +21,7 @@ cut
 Removes the current selection and copies it to the clipboard. When this behavior is enabled varies between browsers, and its conditions have evolved over time. Check the compatibility table for usage details.
 
 decreaseFontSize
-Adds a <small> tag around the selection or at the insertion point. (Not supported by Internet Explorer.)
+Adds a &lt;small&gt; tag around the selection or at the insertion point. (Not supported by Internet Explorer.)
 
 defaultParagraphSeparator
 Changes the paragraph separator used when new paragraphs are created in editable text regions. See Differences in markup generation for more details.
@@ -48,7 +48,7 @@ foreColor
 Changes a font color for the selection or at the insertion point. This requires a hexadecimal color value string as a value argument.
 
 formatBlock
-Adds an HTML block-level element around the line containing the current selection, replacing the block element containing the line if one exists (in Firefox, <blockquote> is the exception — it will wrap any containing block element). Requires a tag-name string as a value argument. Virtually all block-level elements can be used. (Internet Explorer and Edge support only heading tags H1–H6, ADDRESS, and PRE, which must be wrapped in angle brackets, such as "<H1>".)
+Adds an HTML block-level element around the line containing the current selection, replacing the block element containing the line if one exists (in Firefox, &lt;blockquote&gt; is the exception — it will wrap any containing block element). Requires a tag-name string as a value argument. Virtually all block-level elements can be used. (Internet Explorer and Edge support only heading tags H1–H6, ADDRESS, and PRE, which must be wrapped in angle brackets, such as "H1")
 
 forwardDelete
 Deletes the character ahead of the cursor's position, identical to hitting the Delete key on a Windows keyboard.
@@ -60,16 +60,16 @@ hiliteColor
 Changes the background color for the selection or at the insertion point. Requires a color value string as a value argument. useCSS must be true for this to function. (Not supported by Internet Explorer.)
 
 increaseFontSize
-Adds a <big> tag around the selection or at the insertion point. (Not supported by Internet Explorer.)
+Adds a &lt;big&gt; tag around the selection or at the insertion point. (Not supported by Internet Explorer.)
 
 indent
 Indents the line containing the selection or insertion point. In Firefox, if the selection spans multiple lines at different levels of indentation, only the least indented lines in the selection will be indented.
 
 insertBrOnReturn
-Controls whether the Enter key inserts a <br> element, or splits the current block element into two. (Not supported by Internet Explorer.)
+Controls whether the Enter key inserts a &lt;br&gt; element, or splits the current block element into two. (Not supported by Internet Explorer.)
 
 insertHorizontalRule
-Inserts a <hr> element at the insertion point, or replaces the selection with it.
+Inserts a &lt;hr&gt; element at the insertion point, or replaces the selection with it.
 
 insertHTML
 Inserts an HTML string at the insertion point (deletes selection). Requires a valid HTML string as a value argument. (Not supported by Internet Explorer.)
@@ -90,7 +90,7 @@ insertText
 Inserts the given plain text at the insertion point (deletes selection).
 
 italic
-Toggles italics on/off for the selection or at the insertion point. (Internet Explorer uses the <em> element instead of <i>.)
+Toggles italics on/off for the selection or at the insertion point. (Internet Explorer uses the &lt;em&gt; element instead of &lt;i&gt;)
 
 justifyCenter
 Centers the selection or insertion point.
@@ -138,8 +138,7 @@ unlink
 Removes the anchor element from a selected hyperlink.
 
 useCSS
-Toggles the use of HTML tags or CSS for the generated markup. Requires a boolean true/false as a value argument.
-NOTE: This argument is logically backwards (i.e. use false to use CSS, true to use HTML) and unsupported by Internet Explorer. This has been deprecated in favor of styleWithCSS.
+Toggles the use of HTML tags or CSS for the generated markup. Requires a boolean true/false as a value argument. NOTE: This argument is logically backwards (i.e. use false to use CSS, true to use HTML) and unsupported by Internet Explorer. This has been deprecated in favor of styleWithCSS.
 
 styleWithCSS
 Replaces the useCSS command. true modifies/generates style attributes in markup, false generates presentational elements.
