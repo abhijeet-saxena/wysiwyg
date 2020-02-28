@@ -30,6 +30,7 @@ window.onload = () => {
   const colorForm = document.querySelector('.color-form')
   const highlightForm = document.querySelector('.highlight-color-form')
   const headingForm = document.querySelector('.heading-form')
+  const fontsDropDown = document.querySelector('#fonts')
 
   const resetForms = () => {
     urlForm.classList.add('hide')
@@ -45,11 +46,25 @@ window.onload = () => {
   document.execCommand('defaultParagraphSeparator', false, 'p')
   alignContent('align', 'justifyLeft')
 
+  fontsDropDown.addEventListener('change', (event) => {
+    document.execCommand('fontName', false, event.target.value)
+    return
+  })
+
   document.body.addEventListener('click', (event) => {
     if (!event.path.some((item) => item.tagName === 'MAIN')) resetForms()
   })
 
   editor.addEventListener('click', (event) => {
+    let selectedFontIndex = 0
+    if (event.target.style.fontFamily) {
+      Array.from(fontsDropDown.options).forEach((item, index) => {
+        if (item.value === event.target.style.fontFamily)
+          selectedFontIndex = index
+      })
+    }
+    fontsDropDown.options[selectedFontIndex].selected = true
+
     Object.keys(svgMap).forEach((svg) => {
       resetForms()
       const button = document.querySelector(`[data-command="${svg}"]`)
