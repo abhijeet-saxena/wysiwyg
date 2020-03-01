@@ -13,6 +13,7 @@
 body,
 html {
   overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -22,14 +23,6 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-}
-
-header,
-footer {
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
 }
 
 footer svg {
@@ -75,6 +68,8 @@ body header span {
   width: 80vw;
   height: 50vh;
   padding: 1.25rem;
+
+  font-family: Arial, Helvetica, sans-serif;
 
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
@@ -247,8 +242,12 @@ pre {
   padding: 1rem;
   margin: 5px 0rem;
   border-radius: 5px;
-  display: block;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-x: scroll;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: white;
+  padding: 5px;
+  border: solid 1px rgba(59, 72, 84, 0.5);
 }
