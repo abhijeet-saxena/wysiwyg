@@ -1,6 +1,46 @@
 // Show correct shortcuts
-const controlButton = navigator.userAgent.includes('Apple') ? '⌘' : 'Ctrl'
-const shiftButton = navigator.userAgent.includes('Apple') ? '⇧' : 'Shift'
+const isOSX = navigator.userAgent.includes('Apple')
+const controlButton = isOSX ? '⌘' : 'Ctrl'
+const shiftButton = isOSX ? '⇧' : 'Shift'
+
+const webSafeFonts = [
+  'Arial, sans-serif',
+  'Baskerville, serif',
+  'Brush Script MT, cursive',
+  'Copperplate, monospace',
+  'Comic Sans MS, sans-serif',
+  'Courier New, monospace',
+  'Georgia, serif',
+  'Impact, sans-serif',
+  'Montserrat, sans-serif',
+  'Papyrus, sans-serif',
+  'Palatino, serif',
+  'Tahoma, sans-serif',
+  'Times, serif',
+  'Times New Roman, serif',
+  'Trebuchet MS, sans-serif',
+  'Verdana, sans-serif',
+]
+
+if (isOSX) {
+  webSafeFonts.push('Futura, sans-serif')
+  webSafeFonts.push('Geneva, sans-serif')
+  webSafeFonts.push('Helvetica, sans-serif')
+  webSafeFonts.push('Monaco, monospace')
+  webSafeFonts.push('Big Caslon, serif')
+} else {
+  webSafeFonts.push('Calibri, sans-serif')
+  webSafeFonts.push('Cambria, serif')
+  webSafeFonts.push('Consolas, monospace')
+}
+
+let HTML = ''
+
+webSafeFonts.sort().forEach((item) => {
+  HTML += `<option value="${item}">${item.split(',')[0]}</option>`
+})
+
+document.querySelector('#fonts').innerHTML = HTML
 
 // Defines all the buttons for WYSIWYG Editor
 const svgMap = {
