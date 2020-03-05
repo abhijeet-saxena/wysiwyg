@@ -30,6 +30,14 @@ export const setColor = (event, command) => {
     document.execCommand(command, null, event.target.dataset.color)
 }
 
+// Used for setting font color and highlight color
+export const formatBlock = (event, type) => {
+  document.execCommand('formatBlock', null, event.target.dataset.type)
+  if (type) {
+    document.querySelector(`.${type}`).classList.add('hide')
+  }
+}
+
 // Used for creating link
 export const createLink = (event, selectedText) => {
   event.preventDefault()
