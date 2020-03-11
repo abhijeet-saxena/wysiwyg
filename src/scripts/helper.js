@@ -8,9 +8,11 @@ export const alignContent = (type, command) => {
     document.querySelector(`[data-command=${command}]`).classList.add('active')
 }
 
-// export listElements = (command) =>{
-
-// }
+// Used for setting font color and highlight color
+export const setColor = (event, command) => {
+  if (event.target.tagName === 'SPAN')
+    document.execCommand(command, null, event.target.dataset.color)
+}
 
 // Returns the current selection
 export const saveRange = () => {
