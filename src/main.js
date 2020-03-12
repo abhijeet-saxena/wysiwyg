@@ -1,6 +1,11 @@
 // Imports
 import svgMap from './scripts/svg-map.js'
-import { alignContent, getRange, saveRange } from './scripts/helper.js'
+import {
+  alignContent,
+  setColor,
+  getRange,
+  saveRange,
+} from './scripts/helper.js'
 
 // Variables
 // DOM Selectors
@@ -16,6 +21,14 @@ window.onload = () => {
   Object.keys(svgMap).forEach((svg) => (toolbar.innerHTML += svgMap[svg]))
 
   const urlForm = document.querySelector('.url-form')
+  const colorForm = document.querySelector('.color-form')
+  const highlightColorForm = document.querySelector('.highlight-color-form')
+
+  const resetForms = () => {
+    urlForm.classList.add('hide')
+    colorForm.classList.add('hide')
+    highlightColorForm.classList.add('hide')
+  }
 
   // Set default styles
   document.execCommand('styleWithCSS', false, 'true')
@@ -51,13 +64,23 @@ window.onload = () => {
 
     if (target.tagName !== 'BUTTON') return
 
+    if (command !== 'createLink') resetForms()
+
     if (!target.classList.contains('active')) {
       target.style.animation = 'clicked 200ms ease-in-out'
       target.onanimationend = () => (target.style.animation = '')
     }
 
     if (type === 'align' || type === 'list') alignContent(type, command)
-    else if (command === 'createLink') {
+    else if (command === 'foreColor' || command === 'backColor') {
+      selectedText = saveRange()
+
+      command === 'foreColor'
+        ? colorForm.classList.remove('hide')
+        : highlightColorForm.classList.remove('hide')
+
+      return
+    } else if (command === 'createLink') {
       if (window.getSelection().toString()) {
         selectedText = saveRange()
         urlForm.classList.toggle('hide')
@@ -79,4 +102,9 @@ window.onload = () => {
       // document.getSelection().anchorNode.parentElement.target = '_blank'
     }
   })
+
+  colorForm.addEventListener('click', (event) => setColor(event, 'foreColor'))
+  highlightColorForm.addEventListener('click', (event) =>
+    setColor(event, 'backColor')
+  )
 }
