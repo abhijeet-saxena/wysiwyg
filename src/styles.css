@@ -166,10 +166,6 @@ svg {
   z-index: 1;
 }
 
-.url-form.hide {
-  display: none;
-}
-
 .url-form input[type='text'] {
   height: 100%;
   padding-left: 5px;
@@ -197,4 +193,39 @@ svg {
   content: 'a';
   top: 0;
   left: 0;
+}
+
+.color-form,
+.highlight-color-form {
+  position: absolute;
+  top: -70px;
+  left: 0px;
+  padding: 2px;
+  width: 100px;
+  flex-wrap: wrap;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: solid 1px lightgray;
+  border-radius: 5px;
+}
+
+.color-choice {
+  display: inline-block;
+  width: 20px;
+  margin: 5px 0px;
+  height: 20px;
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.highlight-color-form {
+  top: -35px;
+  width: 120px;
+}
+
+.hide {
+  display: none;
 }
