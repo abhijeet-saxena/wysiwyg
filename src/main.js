@@ -18,8 +18,9 @@ window.onload = () => {
   const urlForm = document.querySelector('.url-form')
 
   // Set default styles
+  document.execCommand('styleWithCSS', false, 'true')
   document.execCommand('justifyLeft', null, null)
-  alignContent('justifyLeft')
+  alignContent('align', 'justifyLeft')
 
   editor.addEventListener('click', (event) => {
     Object.keys(svgMap).forEach((svg) => {
@@ -55,7 +56,7 @@ window.onload = () => {
       target.onanimationend = () => (target.style.animation = '')
     }
 
-    if (type === 'align') alignContent(command)
+    if (type === 'align' || type === 'list') alignContent(type, command)
     else if (command === 'createLink') {
       if (window.getSelection().toString()) {
         selectedText = saveRange()
