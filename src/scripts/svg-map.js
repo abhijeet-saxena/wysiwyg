@@ -37,8 +37,27 @@ const svgMap = {
   removeFormat: `<button class="toolbar-btn once" data-command="removeFormat" data-help="Clear Formatting" data-type="once"><svg viewBox="0 0 640 512"><path fill="currentColor" d="M336 416h-11.17l9.26-27.77L267 336.4 240.49 416H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm297.82 42.1L377 259.59 426.17 112H544v32a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16H176a16 16 0 0 0-16 16v43.9L45.46 3.38A16 16 0 0 0 23 6.19L3.37 31.46a16 16 0 0 0 2.81 22.45l588.36 454.72a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zM309.91 207.76L224 141.36V112h117.83z"></path></svg></button>`,
   insertParagraph: `<button class="toolbar-btn once" data-command="insertParagraph" data-help="Insert Paragraph" data-type="once"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M448 48v32a16 16 0 0 1-16 16h-48v368a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16V96h-32v368a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16V352h-32a160 160 0 0 1 0-320h240a16 16 0 0 1 16 16z"></path></svg></button>`,
 
-  foreColor: `<button class="toolbar-btn" data-command="foreColor" data-help="Font Color"><svg viewBox="0 0 448 512"><path fill="currentColor" d="M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z"></path></svg></button>`,
-  backColor: `<button class="toolbar-btn" data-command="backColor" data-help="Highlight Color"><svg viewBox="0 0 544 512"><path fill="currentColor" d="M0 479.98L99.92 512l35.45-35.45-67.04-67.04L0 479.98zm124.61-240.01a36.592 36.592 0 0 0-10.79 38.1l13.05 42.83-50.93 50.94 96.23 96.23 50.86-50.86 42.74 13.08c13.73 4.2 28.65-.01 38.15-10.78l35.55-41.64-173.34-173.34-41.52 35.44zm403.31-160.7l-63.2-63.2c-20.49-20.49-53.38-21.52-75.12-2.35L190.55 183.68l169.77 169.78L530.27 154.4c19.18-21.74 18.15-54.63-2.35-75.13z"></path></svg></button>`,
+  foreColor: `<button class="toolbar-btn" data-command="foreColor" data-help="Font Color">
+  <div class="color-form hide">
+  <span class="color-choice" style="background: #000000" data-color="#000000"></span>
+  <span class="color-choice" style="background: #00AA55" data-color="#00AA55"></span>
+  <span class="color-choice" style="background: #009FD4" data-color="#009FD4"></span>
+  <span class="color-choice" style="background: #B381B3" data-color="#B381B3"></span>
+  <span class="color-choice" style="background: #6C7A89" data-color="#6C7A89"></span>
+  <span class="color-choice" style="background: #B381B3" data-color="#B381B3"></span>
+  <span class="color-choice" style="background: #E67E2E" data-color="#E67E2E"></span>
+  <span class="color-choice" style="background: #E74C3C" data-color="#E74C3C"></span>
+  </div>
+  <svg viewBox="0 0 448 512"><path fill="currentColor" d="M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z"></path></svg></button>`,
+  backColor: `<button class="toolbar-btn" data-command="backColor" data-help="Highlight Color">
+  <div class="highlight-color-form hide">
+  <span class="color-choice" style="background: #FFFFFF; border: solid 1px rgba(59, 72, 84, 0.4)" data-color="#FFFFFF"></span>
+  <span class="color-choice" style="background: #E6C8FF" data-color="#E6C8FF"></span>
+  <span class="color-choice" style="background: #F5C4BD" data-color="#F5C4BD"></span>
+  <span class="color-choice" style="background: #FBE6C1" data-color="#FBE6C1"></span>
+  <span class="color-choice" style="background: #C2F1EB" data-color="#C2F1EB"></span>
+  </div>
+  <svg viewBox="0 0 544 512"><path fill="currentColor" d="M0 479.98L99.92 512l35.45-35.45-67.04-67.04L0 479.98zm124.61-240.01a36.592 36.592 0 0 0-10.79 38.1l13.05 42.83-50.93 50.94 96.23 96.23 50.86-50.86 42.74 13.08c13.73 4.2 28.65-.01 38.15-10.78l35.55-41.64-173.34-173.34-41.52 35.44zm403.31-160.7l-63.2-63.2c-20.49-20.49-53.38-21.52-75.12-2.35L190.55 183.68l169.77 169.78L530.27 154.4c19.18-21.74 18.15-54.63-2.35-75.13z"></path></svg></button>`,
 
   image: `<button class="toolbar-btn" data-command="image" data-help="Image"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg></button>`,
   heading: `<button class="toolbar-btn" data-command="heading" data-help="Heading"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M448 96v320h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16H320a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h32V288H160v128h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h32V96H32a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16h-32v128h192V96h-32a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16z"></path></svg></button>`,
