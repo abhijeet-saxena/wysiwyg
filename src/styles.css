@@ -127,7 +127,7 @@ body header span {
   pointer-events: none;
 }
 
-.toolbar-btn svg:hover::after {
+.toolbar-btn:hover::after {
   opacity: 1;
   transition: opacity 100ms ease-in-out;
   transition-delay: 1000ms;
