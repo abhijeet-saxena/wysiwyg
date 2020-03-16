@@ -127,7 +127,7 @@ body header span {
   pointer-events: none;
 }
 
-.toolbar-btn:hover::after {
+.toolbar-btn svg:hover::after {
   opacity: 1;
   transition: opacity 100ms ease-in-out;
   transition-delay: 1000ms;
@@ -159,11 +159,15 @@ svg {
 }
 
 .url-form {
-  display: none;
+  display: flex;
   position: absolute;
   top: -2rem;
   left: 50%;
   z-index: 1;
+}
+
+.url-form.hide {
+  display: none;
 }
 
 .url-form input[type='text'] {
@@ -187,4 +191,10 @@ svg {
   border-color: rgba(59, 72, 84, 0.9);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.editor a.active::after {
+  content: 'a';
+  top: 0;
+  left: 0;
 }
