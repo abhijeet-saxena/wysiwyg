@@ -12,12 +12,25 @@ const alignContent = (command) => {
 };
 
 editor.addEventListener(
+  "selectstart",
+  (event) => {
+    const button = document.querySelector(`[data-command="createLink"]`);
+    if (event.path.some((item) => item.tagName === "A"))
+      button.classList.add("active");
+    else button.classList.remove("active");
+  },
+  false
+);
+
+editor.addEventListener(
   "mouseup",
   () => {
     Object.keys(svgMap).forEach((svg) => {
-      const button = document.querySelector(`[data-command="${svg}"]`);
-      if (document.queryCommandState(svg)) button.classList.add("active");
-      else button.classList.remove("active");
+      if (svg !== "createLink") {
+        const button = document.querySelector(`[data-command="${svg}"]`);
+        if (document.queryCommandState(svg)) button.classList.add("active");
+        else button.classList.remove("active");
+      }
     });
   },
   false
@@ -42,6 +55,7 @@ toolbar.addEventListener(
     }
 
     if (type === "align") alignContent(command);
+    else if (command === "createLink") param = "https://itsrockyy.me";
     else if (type !== "once") target.classList.toggle("active");
 
     document.execCommand(command, null, param);
