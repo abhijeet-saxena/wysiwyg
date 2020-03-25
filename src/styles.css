@@ -18,13 +18,13 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
 
-body header,
+header,
 footer {
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -52,14 +52,14 @@ body header span {
   animation: condense 2000ms ease-in-out forwards;
 }
 
-@keyframes condense {
+/* @keyframes condense {
   from {
     margin: 1.5rem 0.5rem;
   }
   to {
     margin: 1.5rem -0.1rem;
   }
-}
+} */
 
 /* body header span::after {
   content: attr(data-fullform);
@@ -96,6 +96,7 @@ body header span {
   border-bottom: none;
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -121,7 +122,7 @@ body header span {
   opacity: 0;
   border-radius: 5px;
   padding: 5px 0;
-  bottom: -115%;
+  bottom: -24px;
   left: 50%;
   pointer-events: none;
 }
