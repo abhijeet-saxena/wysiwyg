@@ -1,3 +1,66 @@
-h1 {
-  color: red;
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.editor {
+  width: 80vw;
+  height: 50vh;
+
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+
+  border-radius: 5px;
+  outline: none;
+  caret-color: red;
+}
+
+.toolbar {
+  width: 80vw;
+  padding: 1rem;
+  border: solid 1px black;
+}
+
+.toolbar button {
+  display: inline-block;
+  border: none;
+  padding: 0.1rem 0.2rem;
+  background: white;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.toolbar button:hover svg {
+  color: black;
+}
+
+svg {
+  width: 1rem;
+  height: 1rem;
+  color: #aaaaaa;
+  pointer-events: none;
+  transition: color 100ms linear;
+}
+
+.toolbar-btn {
+  display: inline-block;
+}
+
+.toolbar-btn::after {
+  /* content: attr(data-func); */
+  /* opacity: 0.5; */
 }
