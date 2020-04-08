@@ -1,66 +1,157 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
 /* Reset Styles */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline: none;
 }
 
+body,
+html {
+  overflow: hidden;
+}
+
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
 
+body header,
+footer {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+footer svg {
+  animation: beat 500ms ease-in-out infinite alternate;
+}
+
+@keyframes beat {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    tramsform: scale(1.25);
+  }
+}
+
+body header span {
+  display: inline-block;
+  font-size: 6rem;
+  position: relative;
+  animation: condense 2000ms ease-in-out forwards;
+}
+
+@keyframes condense {
+  from {
+    margin: 1.5rem 0.5rem;
+  }
+  to {
+    margin: 1.5rem -0.1rem;
+  }
+}
+
+/* body header span::after {
+  content: attr(data-fullform);
+  font-size: 1rem;
+  color: #41484f;
+  letter-spacing: normal;
+  position: absolute;
+  bottom: 20px;
+  right: -1rem;
+} */
+
 .editor {
   width: 80vw;
   height: 50vh;
+  padding: 1.25rem;
 
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-  border-width: 1px;
-  border-style: solid;
-  border-color: lightgray;
+  border: 1px solid lightgray;
 
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  overflow-y: scroll;
   outline: none;
-  caret-color: red;
 }
 
 .toolbar {
   width: 80vw;
-  padding: 1rem;
-  border: solid 1px black;
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+
+  display: flex;
+  align-items: center;
 }
 
-.toolbar button {
+.toolbar-btn {
   display: inline-block;
   border: none;
   padding: 0.1rem 0.2rem;
   background: white;
   cursor: pointer;
   margin: 0 5px;
+  position: relative;
 }
 
-.toolbar button:hover svg {
+.toolbar-btn::after {
+  content: attr(data-help);
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  display: block;
+  color: white;
+  background: rgba(59, 72, 84, 1);
+  opacity: 0;
+  border-radius: 5px;
+  padding: 5px 0;
+  bottom: -115%;
+  left: 50%;
+  pointer-events: none;
+}
+
+.toolbar-btn:hover::after {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+  transition-delay: 1000ms;
+}
+
+.toolbar-btn:hover svg,
+.toolbar-btn.active svg {
   color: black;
+  transform: scale(1.1);
+  transition: transform 100ms ease-in-out;
+}
+
+@keyframes clicked {
+  0%,
+  50% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 svg {
   width: 1rem;
   height: 1rem;
-  color: #aaaaaa;
+  color: rgba(128, 128, 128, 0.6);
   pointer-events: none;
-  transition: color 100ms linear;
-}
-
-.toolbar-btn {
-  display: inline-block;
-}
-
-.toolbar-btn::after {
-  /* content: attr(data-func); */
-  /* opacity: 0.5; */
 }
