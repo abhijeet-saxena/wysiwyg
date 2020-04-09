@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 /* Reset Styles */
 *,
@@ -27,9 +27,9 @@ body {
 header,
 footer {
   text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
 }
 
 footer svg {
@@ -112,7 +112,7 @@ body header span {
 
 .toolbar-btn::after {
   content: attr(data-help);
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   z-index: 1;
   width: 100px;
@@ -153,6 +153,38 @@ body header span {
 svg {
   width: 1rem;
   height: 1rem;
+
   color: rgba(128, 128, 128, 0.6);
   pointer-events: none;
+}
+
+.url-form {
+  display: none;
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  z-index: 1;
+}
+
+.url-form input[type='text'] {
+  height: 100%;
+  padding-left: 5px;
+  height: 32px;
+  border-color: rgba(59, 72, 84, 0.9);
+  border-width: 1px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.url-form input[type='submit'] {
+  height: 32px;
+  padding: 0 5px;
+  color: white;
+  background: rgba(59, 72, 84, 0.9);
+  cursor: pointer;
+  margin-left: -1px;
+
+  border-color: rgba(59, 72, 84, 0.9);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
