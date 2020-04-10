@@ -1,107 +1,110 @@
 // Imports
 import svgMap from './scripts/svg-map.js'
+import {
+  alignContent,
+  setColor,
+  getRange,
+  saveRange,
+} from './scripts/helper.js'
 
 // Variables
+// DOM Selectors
 const editor = document.querySelector('.editor')
 const toolbar = document.querySelector('.toolbar')
-let range = null // Used to store the selected text
 
-const alignContent = (command) => {
-  document
-    .querySelectorAll('.align')
-    .forEach((button) => button.classList.remove('active'))
-  document.querySelector(`[data-command=${command}]`).classList.add('active')
-}
+// Used to store the selected text
+let selectedText = null
+let currentElement = null
 
 window.onload = () => {
   // Draws all toolbar buttons
   Object.keys(svgMap).forEach((svg) => (toolbar.innerHTML += svgMap[svg]))
 
-  // Set default styles
-  document.execCommand('justifyLeft', null, null)
-  alignContent('justifyLeft')
-
   const urlForm = document.querySelector('.url-form')
-  const saveRange = () => {
-    const selection = window.getSelection()
-    if (selection.getRangeAt && selection.rangeCount)
-      range = selection.getRangeAt(0)
+  const colorForm = document.querySelector('.color-form')
+  const highlightColorForm = document.querySelector('.highlight-color-form')
+
+  const resetForms = () => {
+    urlForm.classList.add('hide')
+    colorForm.classList.add('hide')
+    highlightColorForm.classList.add('hide')
   }
 
-  const getRange = () => {
-    if (range) {
-      const selection = window.getSelection()
-      selection.removeAllRanges()
-      selection.addRange(range)
-    }
-  }
+  // Set default styles
+  document.execCommand('styleWithCSS', false, 'true')
+  document.execCommand('justifyLeft', null, null)
+  alignContent('align', 'justifyLeft')
 
-  editor.addEventListener(
-    'selectstart',
-    (event) => {
-      const button = document.querySelector(`[data-command="createLink"]`)
+  editor.addEventListener('click', (event) => {
+    Object.keys(svgMap).forEach((svg) => {
+      const button = document.querySelector(`[data-command="${svg}"]`)
+      let isActive = false
 
-      if (event.path.some((item) => item.tagName === 'A'))
-        button.classList.add('active')
-      else button.classList.remove('active')
-    },
-    false
-  )
-
-  editor.addEventListener(
-    'mouseup',
-    () => {
-      Object.keys(svgMap).forEach((svg) => {
-        if (svg !== 'createLink') {
-          const button = document.querySelector(`[data-command="${svg}"]`)
-          if (document.queryCommandState(svg)) button.classList.add('active')
-          else button.classList.remove('active')
-        }
-      })
-    },
-    false
-  )
-
-  toolbar.addEventListener(
-    'click',
-    (event) => {
-      const {
-        target,
-        target: {
-          dataset: { command, type },
-        },
-      } = event
-      let param = null
-
-      if (target.tagName !== 'BUTTON') return
-
-      if (!target.classList.contains('active')) {
-        target.style.animation = 'clicked 200ms ease-in-out'
-        target.onanimationend = () => (target.style.animation = '')
+      if (svg !== 'createLink')
+        isActive = document.queryCommandState(svg) ? true : false
+      else {
+        isActive = event.path.some((item) => item.tagName === 'A')
+          ? true
+          : false
       }
 
-      if (type === 'align') alignContent(command)
-      else if (command === 'createLink') {
-        saveRange()
-        urlForm.style.display = 'flex'
-        return
-      } else if (type !== 'once') target.classList.toggle('active')
+      if (isActive) button.classList.add('active')
+      else button.classList.remove('active')
+    })
+  })
 
-      document.execCommand(command, null, param)
-    },
-    false
-  )
+  toolbar.addEventListener('click', (event) => {
+    const {
+      target,
+      target: {
+        dataset: { command, type },
+      },
+    } = event
+    let param = null
 
-  urlForm.addEventListener(
-    'submit',
-    (event) => {
-      event.preventDefault()
-      const formData = new FormData(event.target)
-      var url = formData.get('url')
-      getRange()
-      urlForm.style.display = 'none'
+    if (target.tagName !== 'BUTTON') return
+
+    if (command !== 'createLink') resetForms()
+
+    if (!target.classList.contains('active')) {
+      target.style.animation = 'clicked 200ms ease-in-out'
+      target.onanimationend = () => (target.style.animation = '')
+    }
+
+    if (type === 'align' || type === 'list') alignContent(type, command)
+    else if (command === 'foreColor' || command === 'backColor') {
+      selectedText = saveRange()
+
+      command === 'foreColor'
+        ? colorForm.classList.remove('hide')
+        : highlightColorForm.classList.remove('hide')
+
+      return
+    } else if (command === 'createLink') {
+      if (window.getSelection().toString()) {
+        selectedText = saveRange()
+        urlForm.classList.toggle('hide')
+      }
+      return
+    } else if (type !== 'once') target.classList.toggle('active')
+
+    document.execCommand(command, null, param)
+  })
+
+  urlForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const url = document.querySelector('#url').value.trim()
+    urlForm.classList.toggle('hide')
+
+    if (url) {
+      console.log(getRange(selectedText))
       document.execCommand('createLink', null, url)
-    },
-    false
+      // document.getSelection().anchorNode.parentElement.target = '_blank'
+    }
+  })
+
+  colorForm.addEventListener('click', (event) => setColor(event, 'foreColor'))
+  highlightColorForm.addEventListener('click', (event) =>
+    setColor(event, 'backColor')
   )
 }

@@ -159,7 +159,7 @@ svg {
 }
 
 .url-form {
-  display: none;
+  display: flex;
   position: absolute;
   top: -2rem;
   left: 50%;
@@ -187,4 +187,45 @@ svg {
   border-color: rgba(59, 72, 84, 0.9);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.editor a.active::after {
+  content: 'a';
+  top: 0;
+  left: 0;
+}
+
+.color-form,
+.highlight-color-form {
+  position: absolute;
+  top: -70px;
+  left: 0px;
+  padding: 2px;
+  width: 100px;
+  flex-wrap: wrap;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: solid 1px lightgray;
+  border-radius: 5px;
+}
+
+.color-choice {
+  display: inline-block;
+  width: 20px;
+  margin: 5px 0px;
+  height: 20px;
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.highlight-color-form {
+  top: -35px;
+  width: 120px;
+}
+
+.hide {
+  display: none;
 }
