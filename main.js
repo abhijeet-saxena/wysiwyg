@@ -1,10 +1,13 @@
 // Imports
 import svgMap from './scripts/svg-map.js'
 import {
+  saveRange,
   alignContent,
   setColor,
-  getRange,
-  saveRange,
+  createLink,
+  insertImage,
+  copyToHTML,
+  downloadPDF,
 } from './scripts/helper.js'
 
 // Variables
@@ -20,14 +23,16 @@ window.onload = () => {
   // Draws all toolbar buttons
   Object.keys(svgMap).forEach((svg) => (toolbar.innerHTML += svgMap[svg]))
 
+  // DOM selectors for all user input forms
   const urlForm = document.querySelector('.url-form')
+  const imageForm = document.querySelector('.image-form')
   const colorForm = document.querySelector('.color-form')
-  const highlightColorForm = document.querySelector('.highlight-color-form')
+  const highlightForm = document.querySelector('.highlight-color-form')
 
   const resetForms = () => {
     urlForm.classList.add('hide')
     colorForm.classList.add('hide')
-    highlightColorForm.classList.add('hide')
+    highlightForm.classList.add('hide')
   }
 
   // Set default styles
@@ -47,7 +52,6 @@ window.onload = () => {
           ? true
           : false
       }
-
       if (isActive) button.classList.add('active')
       else button.classList.remove('active')
     })
@@ -63,7 +67,6 @@ window.onload = () => {
     let param = null
 
     if (target.tagName !== 'BUTTON') return
-
     if (command !== 'createLink') resetForms()
 
     if (!target.classList.contains('active')) {
@@ -77,7 +80,7 @@ window.onload = () => {
 
       command === 'foreColor'
         ? colorForm.classList.remove('hide')
-        : highlightColorForm.classList.remove('hide')
+        : highlightForm.classList.remove('hide')
 
       return
     } else if (command === 'createLink') {
@@ -86,25 +89,22 @@ window.onload = () => {
         urlForm.classList.toggle('hide')
       }
       return
-    } else if (type !== 'once') target.classList.toggle('active')
+    } else if (command === 'insertImage') {
+      selectedText = saveRange()
+      imageForm.classList.toggle('hide')
+      return
+    } else if (command === 'copyHTML') {
+      editor.focus()
+      document.execCommand('selectAll')
+      copyToHTML(editor)
+    } else if (command === 'downloadPDF') downloadPDF(editor)
+    else if (type !== 'once') target.classList.toggle('active')
 
     document.execCommand(command, null, param)
   })
 
-  urlForm.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const url = document.querySelector('#url').value.trim()
-    urlForm.classList.toggle('hide')
-
-    if (url) {
-      console.log(getRange(selectedText))
-      document.execCommand('createLink', null, url)
-      // document.getSelection().anchorNode.parentElement.target = '_blank'
-    }
-  })
-
-  colorForm.addEventListener('click', (event) => setColor(event, 'foreColor'))
-  highlightColorForm.addEventListener('click', (event) =>
-    setColor(event, 'backColor')
-  )
+  urlForm.addEventListener('submit', (e) => createLink(e, selectedText))
+  imageForm.addEventListener('submit', (e) => insertImage(e, selectedText))
+  colorForm.addEventListener('click', (e) => setColor(e, 'foreColor'))
+  highlightForm.addEventListener('click', (e) => setColor(e, 'backColor'))
 }

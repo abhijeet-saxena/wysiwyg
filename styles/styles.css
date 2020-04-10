@@ -158,7 +158,8 @@ svg {
   pointer-events: none;
 }
 
-.url-form {
+.url-form,
+.image-form {
   display: flex;
   position: absolute;
   top: -2rem;
@@ -166,7 +167,8 @@ svg {
   z-index: 1;
 }
 
-.url-form input[type='text'] {
+.url-form input[type='text'],
+.image-form input[type='text'] {
   height: 100%;
   padding-left: 5px;
   height: 32px;
@@ -176,7 +178,8 @@ svg {
   border-bottom-left-radius: 5px;
 }
 
-.url-form input[type='submit'] {
+.url-form input[type='submit'],
+.image-form input[type='submit'] {
   height: 32px;
   padding: 0 5px;
   color: white;

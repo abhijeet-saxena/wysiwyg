@@ -21,8 +21,8 @@ const svgMap = {
 
   createLink: `<button class="toolbar-btn" data-command="createLink" data-help="Create Link" style="position: relative">
   <form class="url-form hide" autocomplete="off">
-      <input type="text" name="url" id="url" />
-      <input type="submit" value="OK" />
+    <input type="text" name="url" id="url" />
+    <input type="submit" value="OK" />
   </form>
   <svg viewBox="0 0 512 512"><path fill="currentColor" d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></svg>
   </button>`,
@@ -39,27 +39,32 @@ const svgMap = {
 
   foreColor: `<button class="toolbar-btn" data-command="foreColor" data-help="Font Color">
   <div class="color-form hide">
-  <span class="color-choice" style="background: #000000" data-color="#000000"></span>
-  <span class="color-choice" style="background: #00AA55" data-color="#00AA55"></span>
-  <span class="color-choice" style="background: #009FD4" data-color="#009FD4"></span>
-  <span class="color-choice" style="background: #B381B3" data-color="#B381B3"></span>
-  <span class="color-choice" style="background: #6C7A89" data-color="#6C7A89"></span>
-  <span class="color-choice" style="background: #B381B3" data-color="#B381B3"></span>
-  <span class="color-choice" style="background: #E67E2E" data-color="#E67E2E"></span>
-  <span class="color-choice" style="background: #E74C3C" data-color="#E74C3C"></span>
+    <span class="color-choice" style="background: #000000" data-color="#000000"></span>
+    <span class="color-choice" style="background: #FFFFFF; border: solid 1px rgba(59, 72, 84, 0.4)" data-color="#FFFFFF"></span>
+    <span class="color-choice" style="background: #00AA55" data-color="#00AA55"></span>
+    <span class="color-choice" style="background: #009FD4" data-color="#009FD4"></span>
+    <span class="color-choice" style="background: #B381B3" data-color="#B381B3"></span>
+    <span class="color-choice" style="background: #6C7A89" data-color="#6C7A89"></span>
+    <span class="color-choice" style="background: #E67E2E" data-color="#E67E2E"></span>
+    <span class="color-choice" style="background: #E74C3C" data-color="#E74C3C"></span>
   </div>
   <svg viewBox="0 0 448 512"><path fill="currentColor" d="M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z"></path></svg></button>`,
   backColor: `<button class="toolbar-btn" data-command="backColor" data-help="Highlight Color">
   <div class="highlight-color-form hide">
-  <span class="color-choice" style="background: #FFFFFF; border: solid 1px rgba(59, 72, 84, 0.4)" data-color="#FFFFFF"></span>
-  <span class="color-choice" style="background: #E6C8FF" data-color="#E6C8FF"></span>
-  <span class="color-choice" style="background: #F5C4BD" data-color="#F5C4BD"></span>
-  <span class="color-choice" style="background: #FBE6C1" data-color="#FBE6C1"></span>
-  <span class="color-choice" style="background: #C2F1EB" data-color="#C2F1EB"></span>
+    <span class="color-choice" style="background: #FFFFFF; border: solid 1px rgba(59, 72, 84, 0.4)" data-color="#FFFFFF"></span>
+    <span class="color-choice" style="background: #E6C8FF" data-color="#E6C8FF"></span>
+    <span class="color-choice" style="background: #F5C4BD" data-color="#F5C4BD"></span>
+    <span class="color-choice" style="background: #FBE6C1" data-color="#FBE6C1"></span>
+    <span class="color-choice" style="background: #C2F1EB" data-color="#C2F1EB"></span>
   </div>
   <svg viewBox="0 0 544 512"><path fill="currentColor" d="M0 479.98L99.92 512l35.45-35.45-67.04-67.04L0 479.98zm124.61-240.01a36.592 36.592 0 0 0-10.79 38.1l13.05 42.83-50.93 50.94 96.23 96.23 50.86-50.86 42.74 13.08c13.73 4.2 28.65-.01 38.15-10.78l35.55-41.64-173.34-173.34-41.52 35.44zm403.31-160.7l-63.2-63.2c-20.49-20.49-53.38-21.52-75.12-2.35L190.55 183.68l169.77 169.78L530.27 154.4c19.18-21.74 18.15-54.63-2.35-75.13z"></path></svg></button>`,
 
-  image: `<button class="toolbar-btn" data-command="image" data-help="Image"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg></button>`,
+  insertImage: `<button class="toolbar-btn" data-command="insertImage" data-help="Image">
+  <form class="image-form hide" autocomplete="off">
+    <input type="text" name="image" id="image" />
+    <input type="submit" value="OK" />
+  </form>
+  <svg viewBox="0 0 512 512"><path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"></path></svg></button>`,
   heading: `<button class="toolbar-btn" data-command="heading" data-help="Heading"><svg viewBox="0 0 512 512"><path fill="currentColor" d="M448 96v320h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16H320a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h32V288H160v128h32a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h32V96H32a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16h-32v128h192V96h-32a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16v32a16 16 0 0 1-16 16z"></path></svg></button>`,
   codeBlock: `<button class="toolbar-btn" data-command="codeBlock" data-help="Code Block"><svg viewBox="0 0 640 512"><path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></button>`,
 
