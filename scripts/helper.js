@@ -61,8 +61,13 @@ export const insertImage = (event, selectedText) => {
 
   if (imageURL) {
     getRange(selectedText)
-    document.execCommand('insertImage', null, imageURL)
+    document.execCommand(
+      'insertHTML',
+      null,
+      `<div style="display:inline-block; resize:both; overflow:hidden;"><img style="width:100%; height:100%" src="${imageURL}"></img></div>`
+    )
   }
+  document.querySelector('#image').value = ''
 }
 
 // Returns the current selection
