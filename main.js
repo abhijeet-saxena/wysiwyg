@@ -134,7 +134,11 @@ window.onload = () => {
       })
       return
     } else if (command === 'downloadPDF') downloadPDF(editor)
-    else if (type !== 'once') target.classList.toggle('active')
+    else if (command === 'selectAll') editor.focus()
+    else if (command === 'fullScreen') {
+      document.querySelector('.fullscreen').requestFullscreen()
+      return
+    } else if (type !== 'once') target.classList.toggle('active')
 
     document.execCommand(command, false, param)
   })
