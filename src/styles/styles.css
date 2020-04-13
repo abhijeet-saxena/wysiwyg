@@ -71,6 +71,7 @@ body header span {
   font-family: Arial, Helvetica, sans-serif;
   overflow-y: scroll;
   outline: none;
+  caret-color: currentColor;
 }
 
 .toolbar {
