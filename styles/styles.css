@@ -10,26 +10,14 @@
   outline: none;
 }
 
-body,
-html {
-  overflow: hidden;
-}
-
 body {
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-header,
-footer {
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 footer svg {
@@ -43,6 +31,12 @@ footer svg {
   to {
     tramsform: scale(1.25);
   }
+}
+
+main {
+  width: 760px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
 }
 
 body header span {
@@ -72,58 +66,42 @@ body header span {
 } */
 
 .editor {
-  width: 80vw;
-  height: 50vh;
-  padding: 1.25rem;
-
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
-    0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
-  border: 1px solid lightgray;
-
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-
+  min-height: 300px;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
   overflow-y: scroll;
   outline: none;
 }
 
 .toolbar {
-  width: 80vw;
   padding: 0.5rem;
-  border: 1px solid lightgray;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom: none;
-
+  padding-bottom: 0px;
+  border-bottom: 1px solid lightgray;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
 }
 
 .toolbar-btn {
-  display: inline-block;
   border: none;
-  padding: 0.1rem 0.2rem;
+  padding: 0.2rem 0.1rem;
   background: white;
   cursor: pointer;
-  margin: 0 5px;
+  margin: 5px;
   position: relative;
 }
 
 .toolbar-btn::after {
   content: attr(data-help);
-  font-family: 'Montserrat', sans-serif;
   position: absolute;
   z-index: 1;
   width: 100px;
-  display: block;
   color: white;
   background: rgba(59, 72, 84, 1);
   opacity: 0;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 5px 0;
   bottom: -24px;
-  left: 50%;
+  left: 0%;
   pointer-events: none;
 }
 
@@ -136,14 +114,13 @@ body header span {
 .toolbar-btn:hover svg,
 .toolbar-btn.active svg {
   color: black;
-  transform: scale(1.1);
+  transform: scale(1.2);
   transition: transform 100ms ease-in-out;
 }
 
 svg {
   width: 1rem;
   height: 1rem;
-
   color: rgba(128, 128, 128, 0.6);
   pointer-events: none;
 }
@@ -154,7 +131,6 @@ svg {
   position: absolute;
   top: -2rem;
   left: 50%;
-  z-index: 1;
 }
 
 .url-form input[type='text'],
@@ -182,35 +158,25 @@ svg {
   border-bottom-right-radius: 5px;
 }
 
-.editor a.active::after {
-  content: 'a';
-  top: 0;
-  left: 0;
-}
-
 .color-form,
 .highlight-color-form {
   position: absolute;
   top: -70px;
-  left: 0px;
   padding: 2px;
-  width: 100px;
+  width: 105px;
   flex-wrap: wrap;
   z-index: 1;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
   background: rgba(255, 255, 255, 0.9);
   border: solid 1px lightgray;
   border-radius: 5px;
 }
 
 .color-choice {
-  display: inline-block;
   width: 20px;
   margin: 5px 0px;
   height: 20px;
-  border-radius: 50%;
   opacity: 1;
 }
 
@@ -220,20 +186,33 @@ svg {
 }
 
 .heading-form {
-  display: flex;
-  flex-direction: column;
   position: absolute;
-  top: 0px;
-  left: 100%;
+  top: 0.2rem;
   z-index: 2;
+  left: 1.5rem;
 }
 
 .heading-choice {
   width: 125px;
   background: white;
-  border: solid 1px black;
+  border: solid 1px gray;
+  border-bottom: none;
   padding: 5px 0px;
-  z-index: 2;
+}
+
+.heading-choice:hover {
+  background: lightgray;
+}
+
+.heading-choice:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.heading-choice:last-child {
+  border: solid 1px gray;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .hide {
@@ -244,11 +223,18 @@ svg {
 pre {
   background: rgba(30, 30, 30, 1);
   color: white;
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 5px 0rem;
   border-radius: 5px;
-  display: block;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-x: scroll;
+}
+
+select {
+  background: white;
+  padding: 2px 5px;
+  width: 125px;
+  height: 32px;
+  height: 24px;
+  border: solid 1px rgba(59, 72, 84, 0.5);
+  margin-top: 4px;
+  margin-right: 5px;
 }

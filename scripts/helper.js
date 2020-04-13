@@ -67,49 +67,33 @@ export const insertImage = (event, selectedText) => {
 
 // Returns the current selection
 export const copyToHTML = (target) => {
+  if (document.querySelector('pre')) {
+    document.querySelector(
+      'pre'
+    ).style.cssText = ` background: rgba(30, 30, 30, 1);
+      color: white;
+      padding: 1rem;
+      margin: 5px 0rem;
+      border-radius: 5px;`
+
+    document.querySelector('pre').innerHTML = document
+      .querySelector('pre')
+      .innerHTML.trim()
+  }
+
   navigator.clipboard.writeText(target.innerHTML.trim())
 }
 
 // Sets the given text as active selection
 export const downloadPDF = (editor) => {
-  // var HTML_Width = 800
-  // var HTML_Height = 480
-  // var top_left_margin = 15
-  // var PDF_Width = HTML_Width + top_left_margin * 2
-  // var PDF_Height = PDF_Width * 1.5 + top_left_margin * 2
-  // var canvas_image_width = HTML_Width
-  // var canvas_image_height = HTML_Height
-
-  // var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1
-
   html2canvas(editor, {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    windowWidth: window.innerWidth,
-    windowHeight: window.innerHeight,
+    scale: 1,
+    allowTaint: true,
+    useCORS: true,
   }).then(function (canvas) {
-    var imgData = canvas.toDataURL('image/jpeg', 1.0)
-    // console.log(imgData)
-    // var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height])
-    // pdf.addImage(
-    //   imgData,
-    //   'JPG',
-    //   top_left_margin,
-    //   top_left_margin,
-    //   canvas_image_width,
-    //   canvas_image_height
-    // )
-    // for (var i = 1; i <= totalPDFPages; i++) {
-    //   pdf.addPage(PDF_Width, PDF_Height)
-    //   pdf.addImage(
-    //     imgData,
-    //     'JPG',
-    //     top_left_margin,
-    //     -(PDF_Height * i) + top_left_margin * 4,
-    //     canvas_image_width,
-    //     canvas_image_height
-    //   )
-    // }
-    // pdf.save('Your_PDF_Name.pdf')
+    var imgData = canvas.toDataURL('image/png', 1.0)
+    let pdf = new jsPDF('portrait', 'mm', 'a4')
+    pdf.addImage(imgData, 'PNG', 5, 20)
+    pdf.save('File.pdf')
   })
 }
