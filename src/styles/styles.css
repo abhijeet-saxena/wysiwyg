@@ -39,31 +39,9 @@ main {
   border-radius: 5px;
 }
 
-body header span {
-  display: inline-block;
+body header h1 {
   font-size: 6rem;
-  position: relative;
-  animation: condense 2000ms ease-in-out forwards;
 }
-
-/* @keyframes condense {
-  from {
-    margin: 1.5rem 0.5rem;
-  }
-  to {
-    margin: 1.5rem -0.1rem;
-  }
-} */
-
-/* body header span::after {
-  content: attr(data-fullform);
-  font-size: 1rem;
-  color: #41484f;
-  letter-spacing: normal;
-  position: absolute;
-  bottom: 20px;
-  right: -1rem;
-} */
 
 .editor {
   min-height: 300px;
@@ -255,6 +233,7 @@ select {
   }
 }
 
+/* Fullscreen Styles */
 .fullscreen:fullscreen {
   background: white;
   display: flex;
