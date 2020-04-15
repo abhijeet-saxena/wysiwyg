@@ -18,7 +18,6 @@ const toolbar = document.querySelector('.toolbar')
 
 // Used to store the selected text
 let selectedText = null
-let currentElement = null
 
 window.onload = () => {
   // Draws all toolbar buttons
