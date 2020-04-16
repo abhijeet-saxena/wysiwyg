@@ -64,7 +64,7 @@ export const insertImage = (event, selectedText) => {
     document.execCommand(
       'insertHTML',
       null,
-      `<div style="display:inline-block; resize:both; overflow:hidden;"><img style="width:100%; height:100%" src="${imageURL}"></img></div>`
+      `<div class="editor-img-container"><img style="width:100%; height:100%" src="${imageURL}"></img></div>`
     )
   }
   document.querySelector('#image').value = ''
@@ -73,13 +73,13 @@ export const insertImage = (event, selectedText) => {
 // Returns the current selection
 export const copyToHTML = (target) => {
   if (document.querySelector('pre')) {
-    document.querySelector(
-      'pre'
-    ).style.cssText = ` background: rgba(30, 30, 30, 1);
+    document.querySelector('pre').style.cssText = `
+      background: rgba(30, 30, 30, 1);
       color: white;
       padding: 1rem;
       margin: 5px 0rem;
-      border-radius: 5px;`
+      border-radius: 5px
+    `
   }
 
   navigator.clipboard.writeText(target.innerHTML.trim())

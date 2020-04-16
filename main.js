@@ -23,6 +23,8 @@ window.onload = () => {
   // Draws all toolbar buttons
   Object.keys(svgMap).forEach((svg) => (toolbar.innerHTML += svgMap[svg]))
 
+  editor.setAttribute('data-count', `${editor.innerText.length} Characters`)
+
   // DOM selectors for all user input forms
   const urlForm = document.querySelector('.url-form')
   const imageForm = document.querySelector('.image-form')
@@ -150,4 +152,12 @@ window.onload = () => {
   colorForm.addEventListener('click', (e) => setColor(e, 'foreColor'))
   highlightForm.addEventListener('click', (e) => setColor(e, 'backColor'))
   headingForm.addEventListener('click', (e) => formatBlock(e, 'heading-form'))
+
+  editor.addEventListener('keydown', (e) => {
+    // Shortcut for Underline
+    if (e.keyCode === 85 && e.metaKey)
+      document.execCommand('underline', false, null)
+
+    editor.setAttribute('data-count', `${editor.innerText.length} Characters`)
+  })
 }
