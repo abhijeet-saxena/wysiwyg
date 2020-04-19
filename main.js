@@ -159,9 +159,13 @@ window.onload = () => {
   headingForm.addEventListener('click', (e) => formatBlock(e, 'heading-form'))
 
   editor.addEventListener('keydown', (e) => {
+    console.log(e)
     // Shortcut for Underline
     if (e.keyCode === 85 && e.metaKey)
       document.execCommand('underline', false, null)
+    else if (e.keyCode === 75 && e.metaKey)
+      document.querySelector('[data-command="createLink"]').click()
+    else if (false) document.execCommand('underline', false, null)
 
     editor.setAttribute(
       'data-count',
