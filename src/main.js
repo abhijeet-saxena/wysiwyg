@@ -11,8 +11,7 @@ import {
   downloadPDF,
 } from './scripts/helper.js'
 
-// Variables
-// DOM Selectors
+// Variables & DOM Selectors
 const editor = document.querySelector('.editor')
 const toolbar = document.querySelector('.toolbar')
 
@@ -37,6 +36,8 @@ window.onload = () => {
   const highlightForm = document.querySelector('.highlight-color-form')
   const headingForm = document.querySelector('.heading-form')
   const fontsDropDown = document.querySelector('#fonts')
+  const imageInput = document.querySelector('#image')
+  const urlFormInput = document.querySelector('#url')
 
   const resetForms = () => {
     urlForm.classList.add('hide')
@@ -44,6 +45,49 @@ window.onload = () => {
     colorForm.classList.add('hide')
     highlightForm.classList.add('hide')
     headingForm.classList.add('hide')
+  }
+
+  const checkKeyboardShortcut = (event) => {
+    const { keyCode, metaKey, shiftKey } = event
+
+    if (!metaKey) return false
+
+    console.log(event)
+
+    switch (keyCode) {
+      case 85: // Shortcut for Underline (Cmd+U)
+        document.execCommand('underline', false, null)
+        return true
+      case 221: // Shortcut for Indent (Cmd+[)
+        document.execCommand('indent', false, null)
+        return true
+      case 219: // Shortcut for Outdent (Cmd+])
+        document.execCommand('outdent', false, null)
+        return true
+      case 75: // Shortcut for Adding Image (Cmd+K)
+        selectedText = saveRange()
+        imageForm.classList.toggle('hide')
+        imageInput.focus()
+        return true
+      case 76: // Shortcut for Adding/Remove Link (Cmd+L)
+        if (shiftKey) {
+          document.execCommand('unlink')
+        } else {
+          if (window.getSelection().toString()) {
+            selectedText = saveRange()
+            urlForm.classList.toggle('hide')
+          }
+          urlFormInput.focus()
+        }
+        return true
+      case 70:
+        if (shiftKey) {
+          document.querySelector('.fullscreen').requestFullscreen()
+          return true
+        }
+      default:
+        return false
+    }
   }
 
   // Set default styles
@@ -76,11 +120,12 @@ window.onload = () => {
       const button = document.querySelector(`[data-command="${svg}"]`)
       let isActive = false
 
-      if (svg === 'createLink')
-        isActive = event.path.some((item) => item.tagName === 'A')
-          ? true
-          : false
-      else {
+      if (svg === 'createLink') {
+        isActive = event.path[0].tagName === 'A' ? true : false
+        if (event.metaKey) window.open(event.path[0].href)
+      } else if (svg === 'insertImage') {
+        isActive = event.path[0].tagName === 'IMG' ? true : false
+      } else {
         isActive = document.queryCommandState(svg) ? true : false
       }
 
@@ -100,51 +145,57 @@ window.onload = () => {
 
     if (target.tagName !== 'BUTTON') return
     if (command !== 'createLink') resetForms()
-
     if (type === 'align' || type === 'list') alignContent(type, command)
-    else if (command === 'foreColor' || command === 'backColor') {
-      selectedText = saveRange()
+    else if (type !== 'once') target.classList.toggle('active')
 
-      command === 'foreColor'
-        ? colorForm.classList.remove('hide')
-        : highlightForm.classList.remove('hide')
-
-      return
-    } else if (command === 'createLink') {
-      if (window.getSelection().toString()) {
+    switch (command) {
+      case 'foreColor':
+      case 'backColor':
         selectedText = saveRange()
-        urlForm.classList.toggle('hide')
-      }
-      document.querySelector('#url').focus()
-      return
-    } else if (command === 'insertImage') {
-      selectedText = saveRange()
-      imageForm.classList.toggle('hide')
-      document.querySelector('#image').focus()
-      return
-    } else if (command === 'heading') {
-      headingForm.classList.remove('hide')
-      return
-    } else if (command === 'copyHTML') {
-      editor.focus()
-      document.execCommand('selectAll', false, null)
-      copyToHTML(editor)
-    } else if (command === 'codeBlock') {
-      formatBlock(event, '')
-      editor.innerHTML += `<p><br></p>`
-      editor.addEventListener('keydown', (e) => {
-        if (e.keyCode === 13) {
-          e.preventDefault()
-          document.execCommand('insertLineBreak')
+        command === 'foreColor'
+          ? colorForm.classList.remove('hide')
+          : highlightForm.classList.remove('hide')
+        return
+      case 'createLink':
+        if (window.getSelection().toString()) {
+          selectedText = saveRange()
+          urlForm.classList.toggle('hide')
         }
-      })
-      return
-    } else if (command === 'downloadPDF') downloadPDF(editor)
-    else if (command === 'selectAll') editor.focus()
-    else if (command === 'fullScreen') {
-      document.querySelector('.fullscreen').requestFullscreen()
-      return
-    } else if (type !== 'once') target.classList.toggle('active')
+        urlFormInput.focus()
+        return
+      case 'insertImage':
+        selectedText = saveRange()
+        imageForm.classList.toggle('hide')
+        imageInput.focus()
+        return
+      case 'heading':
+        headingForm.classList.remove('hide')
+        return
+      case 'copyHTML':
+        editor.focus()
+        document.execCommand('selectAll', false, null)
+        copyToHTML(editor)
+        break
+      case 'codeBlock':
+        formatBlock(event, '')
+        editor.innerHTML += `<p><br></p>`
+        editor.addEventListener('keydown', (e) => {
+          if (e.keyCode === 13) {
+            e.preventDefault()
+            document.execCommand('insertLineBreak')
+          }
+        })
+        return
+      case 'downloadPDF':
+        downloadPDF(editor)
+        break
+      case 'selectAll':
+        editor.focus()
+        break
+      case 'fullScreen':
+        document.querySelector('.fullscreen').requestFullscreen()
+        return
+    }
 
     document.execCommand(command, false, param)
   })
@@ -159,15 +210,14 @@ window.onload = () => {
   headingForm.addEventListener('click', (e) => formatBlock(e, 'heading-form'))
 
   editor.addEventListener('keydown', (e) => {
-    // Shortcut for Underline
-    if (e.keyCode === 85 && e.metaKey)
-      document.execCommand('underline', false, null)
-
     editor.setAttribute(
       'data-count',
       `${editor.innerText.split(' ').length} Words | ${
         editor.innerText.length + 1
       } Characters`
     )
+
+    // Checking For custom shortcuts
+    if (checkKeyboardShortcut(e)) event.preventDefault()
   })
 }
