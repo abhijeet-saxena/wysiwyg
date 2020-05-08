@@ -34,13 +34,13 @@ nav .about {
   margin-left: auto;
 }
 
-nav .about a {
+.moving-bar {
   text-decoration: none;
   color: black;
   position: relative;
 }
 
-nav .about a::after {
+.moving-bar::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -52,12 +52,12 @@ nav .about a::after {
   transform-origin: 50% 50%;
 }
 
-nav .about a:hover::after {
+.moving-bar:hover::after {
   width: 110%;
 }
 
 footer {
-  margin: auto 0 1rem 0;
+  margin: auto 0 2rem 0;
   display: flex;
 }
 
@@ -68,8 +68,6 @@ footer svg {
 
 footer a {
   margin-left: 5px;
-  text-decoration: none;
-  color: black;
 }
 
 @keyframes beat {
@@ -82,6 +80,7 @@ main {
   width: 760px;
   border: 1px solid lightgray;
   border-radius: 8px;
+  margin-bottom: 5rem;
 }
 
 body header h1 {
@@ -120,6 +119,49 @@ body header h1 {
   cursor: pointer;
   border-bottom: solid 2px teal;
   border-bottom-style: dotted;
+  position: relative;
+}
+
+.editor a::after {
+  content: attr(href);
+  position: absolute;
+  z-index: 3;
+  color: white;
+  background: rgba(59, 72, 84, 1);
+  opacity: 0;
+  border-radius: 1rem;
+  padding: 5px 10px;
+  top: 1.5rem;
+  left: 50%;
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+.editor a:hover::after {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+  transition-delay: 1000ms;
+}
+
+.editor img::after {
+  content: attr(src);
+  position: absolute;
+  z-index: 3;
+  color: white;
+  background: rgba(59, 72, 84, 1);
+  opacity: 0;
+  border-radius: 1rem;
+  padding: 5px 10px;
+  top: 1.5rem;
+  left: 50%;
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+.editor img:hover::after {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+  transition-delay: 1000ms;
 }
 
 .toolbar {
@@ -303,6 +345,7 @@ body header h1 {
 
   main {
     border: none;
+    height: 100%;
   }
 
   main .toolbar {
@@ -320,4 +363,6 @@ body header h1 {
 
 .fullscreen:fullscreen main {
   width: 80vw;
+  height: 800px;
+  overflow: scroll;
 }
