@@ -49,11 +49,7 @@ window.onload = () => {
 
   const checkKeyboardShortcut = (event) => {
     const { keyCode, metaKey, shiftKey } = event
-
     if (!metaKey) return false
-
-    console.log(event)
-
     switch (keyCode) {
       case 85: // Shortcut for Underline (Cmd+U)
         document.execCommand('underline', false, null)
@@ -80,7 +76,7 @@ window.onload = () => {
           urlFormInput.focus()
         }
         return true
-      case 70:
+      case 70: // Shortcut for Going Fullscreen (Cmd+Shift+F)
         if (shiftKey) {
           document.querySelector('.fullscreen').requestFullscreen()
           return true

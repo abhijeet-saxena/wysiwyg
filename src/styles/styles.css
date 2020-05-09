@@ -26,12 +26,30 @@ nav {
   align-items: center;
 }
 
-nav .logo img {
+.logo img {
   border-radius: 5px;
 }
 
-nav .about {
+.about {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.about a {
+  margin: 0 0.6rem;
+}
+
+.about a:last-child {
+  margin-top: -10px;
+}
+
+.social-action-icons {
+  transition: 200ms ease-out;
+}
+
+.social-action-icons:hover {
+  transform: scale(1.5);
 }
 
 .moving-bar {
@@ -44,16 +62,16 @@ nav .about {
   content: '';
   position: absolute;
   bottom: -5px;
-  left: -5px;
-  width: 0%;
-  height: 2px;
+  left: 0;
+  width: 25%;
+  height: 5px;
   background: black;
   transition: width 400ms ease-in-out;
   transform-origin: 50% 50%;
 }
 
 .moving-bar:hover::after {
-  width: 110%;
+  width: 100%;
 }
 
 footer {
@@ -363,6 +381,12 @@ body header h1 {
 
 .fullscreen:fullscreen main {
   width: 80vw;
-  height: 800px;
-  overflow: scroll;
+}
+
+.fullscreen:fullscreen .editor {
+  min-height: 80vh;
+}
+
+.fullscreen:fullscreen .editor::after {
+  bottom: 1rem;
 }
