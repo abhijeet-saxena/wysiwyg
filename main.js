@@ -89,7 +89,7 @@ window.onload = () => {
   // Set default styles
   document.execCommand('styleWithCSS', false, 'true')
   document.execCommand('justifyLeft', false, null)
-  document.execCommand('defaultParagraphSeparator', false, 'p')
+  document.execCommand('defaultParagraphSeparator', false, 'br')
   alignContent('align', 'justifyLeft')
 
   fontsDropDown.addEventListener('change', (event) => {

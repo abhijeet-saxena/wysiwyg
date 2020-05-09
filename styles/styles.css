@@ -75,7 +75,6 @@ nav {
 }
 
 footer {
-  margin: auto 0 2rem 0;
   display: flex;
 }
 
@@ -95,7 +94,7 @@ footer a {
 }
 
 main {
-  width: 760px;
+  width: 780px;
   border: 1px solid lightgray;
   border-radius: 8px;
   margin-bottom: 5rem;
@@ -103,11 +102,12 @@ main {
 
 body header h1 {
   font-size: 6rem;
-  margin: 1.5rem 0;
+  margin: -3rem 0 1rem;
 }
 
 .editor {
-  min-height: 300px;
+  min-height: 400px;
+  line-height: 1.25rem;
   padding: 1rem;
   font-family: Arial, Helvetica, sans-serif;
   overflow-y: scroll;
@@ -128,7 +128,7 @@ body header h1 {
 }
 
 .editor.pdf::after {
-  opacity: 0;
+  display: none;
 }
 
 .editor a {
@@ -335,6 +335,9 @@ body header h1 {
   padding: 0.5rem;
   margin: 5px 0rem;
   border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .toolbar select {
@@ -350,8 +353,12 @@ body header h1 {
   display: inline-block;
   resize: both;
   overflow: hidden;
-  border-radius: 5px;
   cursor: pointer;
+}
+
+.editor-img-container img {
+  border-radius: 5px;
+  border: solid 1px lightgray;
 }
 
 /* Print Styles */
