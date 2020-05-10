@@ -252,15 +252,15 @@ main {
   display: flex;
   position: absolute;
   top: -2rem;
-  left: 50%;
+  left: 0%;
 }
 
 .url-form input[type='text'],
 .image-form input[type='text'] {
-  height: 100%;
   padding-left: 5px;
   height: 32px;
-  border-color: rgba(59, 72, 84, 0.9);
+  width: 250px;
+  border-color: rgba(59, 72, 84, 1);
   border-width: 1px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -269,9 +269,10 @@ main {
 .url-form input[type='submit'],
 .image-form input[type='submit'] {
   height: 32px;
+  width: 2.5rem;
   padding: 0 5px;
   color: white;
-  background: rgba(59, 72, 84, 0.9);
+  background: rgba(59, 72, 84, 1);
   cursor: pointer;
   margin-left: -1px;
 

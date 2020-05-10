@@ -204,10 +204,7 @@ window.onload = () => {
   })
 
   urlForm.addEventListener('submit', (e) => createLink(e, selectedText))
-  imageForm.addEventListener('submit', (e) => {
-    insertImage(e, selectedText)
-    editor.innerHTML += ' '
-  })
+  imageForm.addEventListener('submit', (e) => insertImage(e, selectedText))
   colorForm.addEventListener('click', (e) => setColor(e, 'foreColor'))
   highlightForm.addEventListener('click', (e) => setColor(e, 'backColor'))
   headingForm.addEventListener('click', (e) => formatBlock(e, 'heading-form'))
