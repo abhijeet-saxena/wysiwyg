@@ -60,13 +60,13 @@ export const insertImage = (event, selectedText) => {
   document.querySelector('.image-form').classList.toggle('hide')
 
   if (imageURL) {
+    getRange(selectedText)
     document.execCommand(
       'insertHTML',
       null,
-      `<div class="editor-img-container"><img style="width:100%; height:100%" src="${imageURL}"></img></div>`
+      `<div class="editor-img-container"><img style="width:100%; height:100%" src="${imageURL}"></img></div> <br>`
     )
   }
-  document.querySelector('#image').value = ''
 }
 
 // Returns the current selection
