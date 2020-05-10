@@ -9,6 +9,7 @@ import {
   insertImage,
   copyToHTML,
   downloadPDF,
+  generateHelp,
 } from './scripts/helper.js'
 
 // Variables & DOM Selectors
@@ -21,6 +22,8 @@ let selectedText = null
 window.onload = () => {
   // Draws all toolbar buttons
   Object.keys(svgMap).forEach((svg) => (toolbar.innerHTML += svgMap[svg]))
+
+  generateHelp()
 
   editor.setAttribute(
     'data-count',
@@ -38,6 +41,7 @@ window.onload = () => {
   const fontsDropDown = document.querySelector('#fonts')
   const imageInput = document.querySelector('#image')
   const urlFormInput = document.querySelector('#url')
+  const helperBlock = document.querySelector('.help-overlay')
 
   const resetForms = () => {
     urlForm.classList.add('hide')
@@ -191,6 +195,9 @@ window.onload = () => {
       case 'fullScreen':
         document.querySelector('.fullscreen').requestFullscreen()
         return
+      case 'help':
+        helperBlock.classList.remove('hide')
+        return
     }
 
     document.execCommand(command, false, param)
@@ -204,6 +211,17 @@ window.onload = () => {
   colorForm.addEventListener('click', (e) => setColor(e, 'foreColor'))
   highlightForm.addEventListener('click', (e) => setColor(e, 'backColor'))
   headingForm.addEventListener('click', (e) => formatBlock(e, 'heading-form'))
+
+  // This event listener will hide the help block
+  helperBlock.addEventListener('click', (e) => {
+    if (e.target.classList.contains('help-overlay'))
+      helperBlock.classList.add('hide')
+  })
+  document.addEventListener('keydown', (e) => {
+    if (e.keyCode === 27 && !helperBlock.classList.contains('hide')) {
+      helperBlock.classList.add('hide')
+    }
+  })
 
   editor.addEventListener('keydown', (e) => {
     editor.setAttribute(

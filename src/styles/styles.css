@@ -333,10 +333,6 @@ main {
   border-bottom-right-radius: 5px;
 }
 
-.hide {
-  display: none;
-}
-
 /* Element Specific Styles */
 .editor pre {
   background: rgba(30, 30, 30, 1);
@@ -368,6 +364,58 @@ main {
 .editor-img-container img {
   border-radius: 5px;
   border: solid 1px lightgray;
+}
+
+.help-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.help-block {
+  padding: 2rem;
+  width: 90vw;
+  max-width: 800px;
+  z-index: 1;
+  background: white;
+  border: solid 1px gray;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.help-block h2 {
+  margin: 1rem;
+  margin-left: 0rem;
+  text-decoration: underline;
+}
+.help-block section {
+  margin-bottom: 1.5rem;
+}
+.help-block li {
+  margin: 0.25rem 0rem;
+  list-style-type: none;
+}
+
+kbd {
+  background-color: #eee;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+    0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+  color: #333;
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
 }
 
 /* Media Queries */
@@ -412,4 +460,8 @@ main {
 
 .fullscreen:fullscreen .editor::after {
   bottom: 1rem;
+}
+
+.hide {
+  display: none;
 }
