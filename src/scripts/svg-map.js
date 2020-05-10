@@ -79,23 +79,35 @@ const svgMap = {
 
   foreColor: `<button class="toolbar-btn" data-command="foreColor" data-help="Font Color">
   <div class="color-form hide">
-    <span class="color-choice" style="background: #000000" data-color="#000000"></span>
-    <span class="color-choice" style="background: #FFFFFF; border: solid 1px rgba(59, 72, 84, 0.4)" data-color="#FFFFFF"></span>
-    <span class="color-choice" style="background: #00AA55" data-color="#00AA55"></span>
-    <span class="color-choice" style="background: #009FD4" data-color="#009FD4"></span>
-    <span class="color-choice" style="background: #B381B3" data-color="#B381B3"></span>
-    <span class="color-choice" style="background: #6C7A89" data-color="#6C7A89"></span>
-    <span class="color-choice" style="background: #E67E2E" data-color="#E67E2E"></span>
-    <span class="color-choice" style="background: #E74C3C" data-color="#E74C3C"></span>
-  </div>
+  <span class="color-choice" style="background: #2ec26b" data-color="#2ec26b"></span>
+  <span class="color-choice" style="background: #f1c40e" data-color="#f1c40e"></span>
+  <span class="color-choice" style="background: #e03e2e" data-color="#e03e2e"></span>
+  <span class="color-choice" style="background: #b96ad9" data-color="#b96ad9"></span>
+  <span class="color-choice" style="background: #3698db" data-color="#3698db"></span>
+
+  <span class="color-choice" style="background: #139178" data-color="#139178"></span>
+  <span class="color-choice" style="background: #e77d23" data-color="#e77d23"></span>
+  <span class="color-choice" style="background: #ba372a" data-color="#ba372a"></span>
+  <span class="color-choice" style="background: #843fa1" data-color="#843fa1"></span>
+  <span class="color-choice" style="background: #236fa1" data-color="#236fa1"></span>
+
+  <span class="color-choice" style="background: #FFFFFF" data-color="#FFFFFF"></span>
+  <span class="color-choice" style="background: #ced4da" data-color="#ced4da"></span>
+  <span class="color-choice" style="background: #95a5a6" data-color="#95a5a6"></span>
+  <span class="color-choice" style="background: #7e8c8d" data-color="#7e8c8d"></span>
+  <span class="color-choice" style="background: #000000" data-color="#000000"></span>
+ </div>
   <svg viewBox="0 0 448 512"><path fill="currentColor" d="M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z"></path></svg></button>`,
   backColor: `<button class="toolbar-btn" data-command="backColor" data-help="Highlight Color">
   <div class="highlight-color-form hide">
-    <span class="color-choice" style="background: #FFFFFF; border: solid 1px rgba(59, 72, 84, 0.4)" data-color="#FFFFFF"></span>
-    <span class="color-choice" style="background: #E6C8FF" data-color="#E6C8FF"></span>
-    <span class="color-choice" style="background: #F5C4BD" data-color="#F5C4BD"></span>
-    <span class="color-choice" style="background: #FBE6C1" data-color="#FBE6C1"></span>
-    <span class="color-choice" style="background: #C2F1EB" data-color="#C2F1EB"></span>
+    <span class="color-choice" style="background: #FFFFFF" data-color="#FFFFFF"></span>
+    <span class="color-choice" style="background: #bfedd2" data-color="#bfedd2"></span>
+    <span class="color-choice" style="background: #fbeeb8" data-color="#fbeeb8"></span>
+    <span class="color-choice" style="background: #f7cac7" data-color="#f7cac7"></span>
+    <span class="color-choice" style="background: #eccafa" data-color="#eccafa"></span>
+    <span class="color-choice" style="background: #c2e0f4" data-color="#c2e0f4"></span>
+    <span class="color-choice" style="background: #95a5a6" data-color="#95a5a6"></span>
+    <span class="color-choice" style="background: #000000" data-color="#000000"></span>
   </div>
   <svg viewBox="0 0 544 512"><path fill="currentColor" d="M0 479.98L99.92 512l35.45-35.45-67.04-67.04L0 479.98zm124.61-240.01a36.592 36.592 0 0 0-10.79 38.1l13.05 42.83-50.93 50.94 96.23 96.23 50.86-50.86 42.74 13.08c13.73 4.2 28.65-.01 38.15-10.78l35.55-41.64-173.34-173.34-41.52 35.44zm403.31-160.7l-63.2-63.2c-20.49-20.49-53.38-21.52-75.12-2.35L190.55 183.68l169.77 169.78L530.27 154.4c19.18-21.74 18.15-54.63-2.35-75.13z"></path></svg></button>`,
 
