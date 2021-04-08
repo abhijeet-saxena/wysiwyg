@@ -94,7 +94,7 @@ export const downloadPDF = (editor) => {
     useCORS: true,
   }).then(function (canvas) {
     var imgData = canvas.toDataURL('image/png', 1.0)
-    let pdf = new jsPDF('portrait', 'mm', 'a4')
+    let pdf = new jspdf.jsPDF('portrait', 'mm', 'a4')
     pdf.addImage(imgData, 'PNG', 5, 20)
     pdf.save('File.pdf')
   })
