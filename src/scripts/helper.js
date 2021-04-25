@@ -64,10 +64,9 @@ export const insertImage = (event, selectedText) => {
     document.execCommand(
       'insertHTML',
       null,
-      `<div class="editor-img-container"><img style="width:100%; height:100%" src="${imageURL}"></img></div>`
+      `<div class="editor-img-container"><img style="width:100%; height:100%" src="${imageURL}"></img></div> <br>`
     )
   }
-  document.querySelector('#image').value = ''
 }
 
 // Returns the current selection
@@ -99,4 +98,32 @@ export const downloadPDF = (editor) => {
     pdf.save('File.pdf')
   })
   editor.classList.remove('pdf')
+}
+
+export const generateHelp = () => {
+  const isOSX = navigator.userAgent.includes('Apple')
+  const cmdButton = isOSX ? '⌘' : 'Ctrl'
+  const shiftButton = isOSX ? '⇧' : 'Shift'
+
+  document.querySelector('.help-block').innerHTML += `
+  <p>This Rich Text Editor supports a variety of functions like Formatting text. Inserting media and links .</p>
+  <h2>Keyboard Shortcuts</h2>
+  <section>
+    <ul>
+      <li><kbd>${cmdButton}</kbd> + <kbd>B</kbd> Bold</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>I</kbd> Italics</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>U</kbd> Underline</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>Z</kbd> Undo</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>${shiftButton}</kbd> + <kbd>Z</kbd> Redo</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>L</kbd> Create Link</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>${shiftButton}</kbd> + <kbd>L</kbd> Remove Link</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>[</kbd> Indent</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>]</kbd> Outdent</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>K</kbd> Insert Image</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>${shiftButton}</kbd> + <kbd>F</kbd> Go Fullscreen</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>A</kbd> Select All</li>
+      <li><kbd>${cmdButton}</kbd> + <kbd>P</kbd> Print</li>
+    </ul>
+  </section>
+  `
 }
