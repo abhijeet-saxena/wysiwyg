@@ -92,9 +92,9 @@ export const downloadPDF = (editor) => {
     allowTaint: true,
     useCORS: true,
   }).then(function (canvas) {
-    const imgData = canvas.toDataURL('image/png', 1.0)
-    const pdf = new jsPDF('portrait', 'mm', 'a4')
-    pdf.addImage(imgData, 'PNG', 2.5, 5)
+    var imgData = canvas.toDataURL('image/png', 1.0)
+    let pdf = new jspdf.jsPDF('portrait', 'mm', 'a4')
+    pdf.addImage(imgData, 'PNG', 5, 20)
     pdf.save('File.pdf')
   })
   editor.classList.remove('pdf')
