@@ -145,4 +145,4 @@ Toggles the use of HTML tags or CSS for the generated markup. Requires a boolean
 **styleWithCSS**
 Replaces the useCSS command. true modifies/generates style attributes in markup, false generates presentational elements.
 
-Made with ️❤︎ by **[Rocky](https://rocky93.github.io/ 'Abhijeet Saxena')**
+Made with ️❤︎ by **[Abhijeet](https://abhijeetsaxena.in/ 'Abhijeet Saxena')**
